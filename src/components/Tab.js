@@ -68,20 +68,6 @@ const Tab = (props) => {
     tabRef,
     ...attributes
   } = props;
-  let [r1, ch_r1] = useState(0);
-  let [g1, ch_g1] = useState(0);
-  let [b1, ch_b1] = useState(0);
-  let [r2, ch_r2] = useState(0);
-  let [g2, ch_g2] = useState(0);
-  let [b2, ch_b2] = useState(0);
-
-  let [n1, ch_n1] = useState(0);
-  let [n2, ch_n2] = useState(0);
-
-  let [o1, ch_o1] = useState(0);
-  let [o2, ch_o2] = useState(0);
-
-  let [s, ch_s] = useState("");
 
   useEffect(() => {
     if (selected && focus) {
