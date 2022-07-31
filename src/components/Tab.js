@@ -16,8 +16,9 @@ const randGradient = () => {
     let data = ['top', 'right', 'bottom', 'left']
     let n1 = data[r1 % 4]
     let n2 = data[r2 % 4]
+    let data = [n1, n2, r1, g1, b1, o1, r2, g2, b2, o2]
 
-    return [n1, n2, r1, g1, b1, o1, r2, g2, b2, o2]
+    return data
 }
 
 
@@ -117,7 +118,6 @@ const Tab = (props) => {
         ch_o1(d[8]); ch_o2(d[9]);
         console.log(123);
 
-        ch_s(background: `linear-gradient(${d[0]}, ${d[1]}, rgba(${d[2]}, ${d[3]}, ${d[4]}, ${d[5]}), rgba(${d[6]}, ${d[7]}, ${d[8]}, ${d[9]}));`)
         }}
       style={s}
     >
