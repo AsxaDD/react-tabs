@@ -1,6 +1,25 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cx from 'clsx';
+
+const randGradient = () => {
+    let r1 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
+    let g1 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
+    let b1 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
+    let r2 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
+    let g2 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
+    let b2 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
+
+    let o1 = (Math.random() * (0.8 - 0.3) + 0.3).toFixed(1);
+    let o2 = (Math.random() * (0.8 - 0.3) + 0.3).toFixed(1);
+
+    let data = ['top', 'right', 'bottom', 'left']
+    let n1 = data[r1 % 4]
+    let n2 = data[r2 % 4]
+
+    return [n1, n2, r1, g1, b1, o1, r2, g2, b2, o2]
+}
+
 
 const DEFAULT_CLASS = 'react-tabs__tab';
 const defaultProps = {
@@ -48,11 +67,28 @@ const Tab = (props) => {
     tabRef,
     ...attributes
   } = props;
+  let [r1, ch_r1] = useState(0);
+  let [g1, ch_g1] = useState(0);
+  let [b1, ch_b1] = useState(0);
+  let [r2, ch_r2] = useState(0);
+  let [g2, ch_g2] = useState(0);
+  let [b2, ch_b2] = useState(0);
+
+  let [n1, ch_n1] = useState(0);
+  let [n2, ch_n2] = useState(0);
+
+  let [o1, ch_o1] = useState(0);
+  let [o2, ch_o2] = useState(0);
+
+  let [s, ch_s] = useState("");
 
   useEffect(() => {
     if (selected && focus) {
       nodeRef.current.focus();
     }
+
+    ch_s("");
+
   }, [selected, focus]);
 
   return (
@@ -73,6 +109,17 @@ const Tab = (props) => {
       aria-controls={`panel${id}`}
       tabIndex={tabIndex || (selected ? '0' : null)}
       data-rttab
+      onClick={() => {
+        let d = randGradient();
+        ch_r1(d[0]); ch_g1(d[1]); ch_b1(d[2]);
+        ch_r2(d[3]); ch_g2(d[4]); ch_b2(d[5]);
+        ch_n1(d[6]); ch_n2(d[7]);
+        ch_o1(d[8]); ch_o2(d[9]);
+        console.log(123);
+
+        ch_s(background: `linear-gradient(${d[0]}, ${d[1]}, rgba(${d[2]}, ${d[3]}, ${d[4]}, ${d[5]}), rgba(${d[6]}, ${d[7]}, ${d[8]}, ${d[9]}));`)
+        }}
+      style={s}
     >
       {children}
     </li>
