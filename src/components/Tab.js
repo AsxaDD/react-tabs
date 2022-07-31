@@ -88,8 +88,6 @@ const Tab = (props) => {
       nodeRef.current.focus();
     }
 
-    ch_s("");
-
   }, [selected, focus]);
 
   return (
@@ -112,14 +110,8 @@ const Tab = (props) => {
       data-rttab
       onClick={() => {
         let d = randGradient();
-        ch_r1(d[0]); ch_g1(d[1]); ch_b1(d[2]);
-        ch_r2(d[3]); ch_g2(d[4]); ch_b2(d[5]);
-        ch_n1(d[6]); ch_n2(d[7]);
-        ch_o1(d[8]); ch_o2(d[9]);
-        console.log(123);
-
+        console.log(d);
         }}
-      style={s}
     >
       {children}
     </li>
