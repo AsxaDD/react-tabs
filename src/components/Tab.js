@@ -1,18 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import cx from 'clsx';
-import gradient from 'random-gradient'
 
-const randStr = (length) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
-    }
-    return result;
-}
 
 
 const DEFAULT_CLASS = 'react-tabs__tab';
@@ -66,6 +55,7 @@ const Tab = (props) => {
     if (selected && focus) {
       nodeRef.current.focus();
     }
+      console.log("GG!!!!");
 
   }, [selected, focus]);
 
@@ -87,10 +77,6 @@ const Tab = (props) => {
       aria-controls={`panel${id}`}
       tabIndex={tabIndex || (selected ? '0' : null)}
       data-rttab
-      onClick={() => {
-        let d = { background: gradient(randStr(10))}
-        console.log(d);
-        }}
     >
       {children}
     </li>
