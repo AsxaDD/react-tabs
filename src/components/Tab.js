@@ -1,24 +1,17 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import cx from 'clsx';
+import gradient from 'random-gradient'
 
-const randGradient = () => {
-    let r1 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
-    let g1 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
-    let b1 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
-    let r2 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
-    let g2 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
-    let b2 = Math.floor(Math.random() * (240 - 40 + 1) + 40);
-
-    let o1 = (Math.random() * (0.8 - 0.3) + 0.3).toFixed(1);
-    let o2 = (Math.random() * (0.8 - 0.3) + 0.3).toFixed(1);
-
-    let data = ['top', 'right', 'bottom', 'left']
-    let n1 = data[r1 % 4]
-    let n2 = data[r2 % 4]
-    let data = [n1, n2, r1, g1, b1, o1, r2, g2, b2, o2]
-
-    return data
+const randStr = (length) => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
 }
 
 
@@ -95,7 +88,7 @@ const Tab = (props) => {
       tabIndex={tabIndex || (selected ? '0' : null)}
       data-rttab
       onClick={() => {
-        let d = randGradient();
+        let d = { background: gradient(randStr(10))}
         console.log(d);
         }}
     >
