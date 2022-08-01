@@ -78,6 +78,7 @@ const Tabs = (props) => {
   useEffect(() => {
     // Reset focus after initial render, see comment above
     setFocus(false);
+    console.log("GG!")
   }, []);
 
   if (mode === MODE_UNCONTROLLED) {
