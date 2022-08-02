@@ -50,7 +50,6 @@ const Tab = (props) => {
   } = props;
 
   useEffect(() => {
-    console.log(1);
     if (selected && focus) {
       nodeRef.current.focus();
     }
