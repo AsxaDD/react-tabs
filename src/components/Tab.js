@@ -74,7 +74,6 @@ const Tab = (props) => {
       aria-controls={`panel${id}`}
       tabIndex={tabIndex || (selected ? '0' : null)}
       data-rttab
-      onClick={() => console.log(2);}
     >
       {children}
     </li>
